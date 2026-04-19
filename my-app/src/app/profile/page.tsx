@@ -1,26 +1,36 @@
 "use client"
 import { FiBookmark, FiShare2, FiExternalLink } from "react-icons/fi";
+import { FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
 import Link from "next/link"
 import Image from "next/image"
 import { useRef } from "react";
 
 
 function Profilepage() {
-  const vodioarray=["4k.mp4","amazon.mp4","comerical.mp4","nextflix.mp4","tech.mp4"]
+ const vodioarray = [
+  "/video/4k.mp4",
+  "/video/amazon.mp4",
+  "/video/comerical.mp4",
+  "/video/nextflix.mp4",
+  "/video/tech.mp4"
+]
+
   const videoref=useRef<HTMLVideoElement[]>([]);
 
   const playruner=(index:number)=>{
-       const video=videoref.current[index]
-       if(!video){
+       const video=videoref.current?.[index]
+       if(video){
         video.play();
        }
-    const puseruner=()=>{
-      if(!videoref.current){ return
-       }
-
-     videoref.current?.pause();
-     videoref.current.currentTime=0; 
+      }
+    const puseruner=(index:number)=>{
+  const video=videoref.current?.[index]
+  if(video){
+    video.pause();
+    video.currentTime=0;
+  } 
   }
+
 
 
 
@@ -69,69 +79,82 @@ function Profilepage() {
         <p className="text-sm font-extralight">Projects</p>
         <h1  className="font-extrabold leading-4">See the Bollow  <br/>   in the vidoes</h1>
       </div>
-        <div className="flex gap-3">
-          <video src="/video/nextflix.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
-           <video src="/video/nextflix.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
-           <video src="/video/amazon.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
-           <video src="/video/comerical.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
-           <video src="/video/4k.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
-            <video src="/video/tech.mp4"
-          ref={videoref}
-          className="w-61 h-32  hover:cursor-pointer"
-          playsInline
-          loop
-          muted
-          onMouseEnter={playruner}
-          onMouseLeave={puseruner}
-          />
+       <div className="flex items-center justify-center  ">
+         <div className="  grid grid-cols-2 grid-rows-2 gap-3  border-0 border-black  mt-14 justify-center     ">
+          {vodioarray.map((srclin, index) => (
+  <div key={index} className="relative">
 
+    <video
+      src={srclin}
+      muted
+      loop
+      playsInline
+      className="w-68 h-40 rounded-xl object-cover"
+      ref={(el) => {
+        if (el) videoref.current[index] = el;
+      }}
+      onMouseLeave={() => puseruner(index)}
+      onMouseEnter={() => playruner(index)}
+    />
+
+    <h4 className="absolute inset-0 flex items-center  text-white text-sm font-light cursor-pointer bg-black/70s rounded-3xl mt-18 w-21">
+      Project_clone {index + 1}
+    </h4>
+
+  </div>
+))}
         </div>
-    
-                </main>
+       </div>
+ 
+       <footer >
+         
+   <div className="border-4 border-black bg-[#222121] flex flex-row justify-between mt-5 p-17 ">
+      <div className="flex gap-3  flex-col text-white ml-13">
+        <h1 className="font-bold text-xl">Coffetech@ <span className="align-super text-sm font-extralight">Pvt Ltd</span></h1>
+        <p className="font-semibold text-2xl">what we provide</p>
+        <p className=" flex content-justify  leading-normal text-sm font-extralight "> CoffeeTech® develops scalable <br />
+          and innovative web applications <br />delivering clean design strong <br /> performance, and reliable  digital experiences.</p>
+      </div>
+       <div className=" text-white">
+  <h3 className="font-semibold mb-2">Quick Links</h3>
+  <ul className="text-sm space-y-1">
+    <li>Home</li>
+    <li>Projects</li>
+    <li>Contact</li>
+    <li>Blog</li>
+  </ul>
+</div>
+<div className=" text-white">
+  <h3 className="font-semibold mb-2">Contact</h3>
+  <p className="text-sm">Email: jezra6127@gmail.com</p>
+  <p className="text-sm">Phone: +92 328-9193373</p>
+  <h3 className="font-semibold mb-2">Follow US</h3>
+ <div className="flex flex-row  gap-4">
+  <a href="www.linkedin.com/in/rehman-ali3" target="_blank">
+    <FiLinkedin className="hover:text-white cursor-pointer" />
+  </a>
+
+  <a href="https://github.com" target="_blank">
+    <FiGithub className="hover:text-white cursor-pointer" />
+  </a>
+
+  <a href="https://twitter.com" target="_blank">
+    <FiTwitter className="hover:text-white cursor-pointer" />
+  </a>
+ </div>
+</div>
+<div className="flex gap-3  flex-col text-white">
+  
+</div>
+      
+      
+   </div>
+       </footer>
+    </main>
             </div>
     
     
   )
-}
 
+}
 export default Profilepage
