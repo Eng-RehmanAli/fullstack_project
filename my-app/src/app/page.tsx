@@ -1,11 +1,9 @@
 "use client"
-
-import Profilepage from "./profile/page";
-
+import Signpage from "./signup/page";
 export default function Home() {
   return (
   <div>
- <Profilepage/>
+ <Signpage/>
   </div>
   );
 }

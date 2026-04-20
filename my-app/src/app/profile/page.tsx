@@ -30,12 +30,6 @@ function Profilepage() {
     video.currentTime=0;
   } 
   }
-
-
-
-
-
-
   return (
     <div className=" bg-white " >
        
