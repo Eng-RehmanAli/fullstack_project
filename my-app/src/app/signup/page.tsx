@@ -90,12 +90,12 @@ useEffect(()=>{
           <input
             type="email"
             placeholder="Email"
-            className="w-full px-4 py-2 border border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
+            className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
           />
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg text-sm focus:outline-none focus:border-gray-400"
+            className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
           />
           <button className="w-full py-2 bg-[#7B7770] text-white text-sm rounded-lg hover:bg-gray-700 transition-colors">
             Log in
