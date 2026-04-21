@@ -1,12 +1,12 @@
 "use client"
 // import Signpage from "./signup/page";
-import Footerpage from "./Footer/page";
-import Headerpage from "./Header/page";
+
+import Homepage from "./Home/page";
 export default function Home() {
   return (
   <div>
-    <Headerpage/>
- <Footerpage/>
+    <Homepage/>
+
   </div>
   );
 }
