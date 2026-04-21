@@ -1,10 +1,12 @@
 "use client"
 // import Signpage from "./signup/page";
-import LoginPage from "./login/page.tsx";
+import Footerpage from "./Footer/page";
+import Headerpage from "./Header/page";
 export default function Home() {
   return (
   <div>
- <LoginPage/>
+    <Headerpage/>
+ <Footerpage/>
   </div>
   );
 }
