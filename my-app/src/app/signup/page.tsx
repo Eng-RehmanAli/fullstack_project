@@ -1,20 +1,31 @@
+"use client"
+
+
 import Image  from "next/image";
 import React from 'react'
-import { useRef,useEffect } from "react";
+import { useRef,useEffect,useState } from "react";
+import Link from "next/link";
 function Signpage() {
 
 const containerf=useRef<HTMLDivElement>(null);
 const sutileref=useRef<HTMLParagraphElement>(null);
 const  formref=useRef<HTMLDivElement>(null);
+const paragraphref=useRef<HTMLAnchorElement >(null);
+const [user,setuser]=React.useState({
+  Username:"",
+  Email:"",
+  Password:""
+})
 
 useEffect(()=>{
   const word="WELCOME"
   const container=containerf.current
   const  subtitle=sutileref.current
   const  form=formref.current
+  const parag=paragraphref.current
 
 
-  if(!container||!subtitle||!form) return
+  if(!container||!subtitle||!form||!parag) return
   word.split('').forEach((char,i)=>{
     const span=document.createElement('span');
     
@@ -40,6 +51,9 @@ useEffect(()=>{
   setTimeout(() => {
     form.style.opacity='1'
   }, done+200);
+  setTimeout(() => {
+    parag.style.opacity='1'
+  }, done+200);
 },[])
 
 
@@ -51,7 +65,7 @@ useEffect(()=>{
       {/* LEFT SIDE — branding */}
       <div className="flex-1 ">
         <div className="text-left p-10 mt-60 flex flex-col gap-1.5">
-          <h1 className="font-extrabold text-8xl text-[#7B7770]">Coffetech@</h1>
+          <h1 className="font-extrabold text-8xl text-[#7B7770] hover:scale-105 transition cursor-pointer">Coffetech@</h1>
           <div className="flex flex-row gap-3.5 ml-4 items-center">
             <p className="underline  ">
               Rehman ALI <span className="align-super">Pro</span>
@@ -88,18 +102,30 @@ useEffect(()=>{
           className="flex flex-col gap-3 w-full text-black max-w-sm px-8 opacity-0 transition-opacity duration-500 bg-white p-6 rounded-xl"
         >
           <input
+            type="text"
+            value={user.Username}
+            onChange={(e)=>setuser({...user,Username:e.target.value})}
+            placeholder="Username"
+            className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
+          />
+          <input
             type="email"
             placeholder="Email"
+              value={user.Email}
+            onChange={(e)=>setuser({...user,Email:e.target.value})}
             className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
           />
           <input
             type="password"
             placeholder="Password"
+            value={user.Password}
+            onChange={(e)=>setuser({...user,Password:e.target.value})}
             className="w-full px-4 py-2 border-2 border-gray-900 rounded-lg text-sm focus:outline-none focus:border-gray-400"
           />
           <button className="w-full py-2 bg-[#7B7770] text-white text-sm rounded-lg hover:bg-gray-700 transition-colors">
             Log in
           </button>
+          <Link ref={paragraphref} href="/login/page.tsx">Go to the Login page<span className="font-bold text-2xl ">?</span></Link>
         </div>
 
       </div>

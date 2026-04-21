@@ -1,33 +1,113 @@
-"use client"
-import Link from "next/link";
-import React from 'react'
+'use client'
+import Link from "next/link"
+import { useRef, useEffect } from "react"
 
 function LoginPage() {
-const [user,setuser]=React.useState({
-    email:"",
-    password:" "
-})
+  const containerf   = useRef<HTMLDivElement>(null)
+  const sutileref    = useRef<HTMLDivElement>(null)
+  const formref      = useRef<HTMLDivElement>(null)
+  const paragraphref = useRef<HTMLParagraphElement>(null)
+
+  useEffect(() => {
+    const word      = "WELCOME"
+    const container = containerf.current
+    const subtitle  = sutileref.current
+    const form      = formref.current
+    const parag     = paragraphref.current
+
+    if (!container || !subtitle || !form || !parag) return
+
+    // animate letters one by one
+    word.split('').forEach((char, i) => {
+      const span = document.createElement('span')
+      span.textContent = char
+      span.className = 'inline-block text-4xl font-bold text-white opacity-0'
+      container.appendChild(span)
+
+      setTimeout(() => {
+        span.classList.add('animate-pop')  // ✅ fixed name
+      }, i * 150)
+    })
+
+    const done = word.length * 150 + 100  // ✅ + not *
+
+    // fade in subtitle
+    setTimeout(() => {
+      subtitle.style.opacity = '1'
+    }, done)
+
+    // fade in form
+    setTimeout(() => {
+      form.style.opacity = '1'
+    }, done + 100)
+
+    // fade in paragraph
+    setTimeout(() => {
+      parag.style.opacity = '1'
+    }, done + 200)
+
+  }, [])
+
   return (
-    <div className="min-h-screen flex justify-center items-center bg-[url('/images/random.jpeg')] bg-cover bg-center">
-     {/* Login page will made here inshallah*/}
-     <div className="outer flex flex-col bg-black px-60 py-60  gap-6 rounded-2xl gap-2 w-80 items-center justify-center  bg-black ">
-        <h1 className="bg-blue-400 rounded-2xl w-80 p-3 font-bold text-center text-2xl">Login</h1>
-      <div className="LOginpage  flex flex-col gap-4 "> 
-        <label htmlFor="Email" className="font-bold text-2xl text-white">Email</label>
-        <input type="text" placeholder="Email" id="Email"
-        value={user.email}
-        onChange={(e)=>setuser({...user,email:e.target.value})}
-        className=" text-2xl text-white w-80 focus:outline-none focus:right-2.5  border-4 border-white "/>
-       < label htmlFor="Password" className="font-bold text-2xl text-white">Password</label>
-        <input type="Password" placeholder="Password" id="Password"  
-        value={user.password}
-        onChange={(e)=>setuser({...user,password:e.target.value})} 
-        className=" text-2xl text-white w-80 focus:outline-none focus:right-2.5   border-4 border-white "/>
-          <button className="bg-blue-400 rounded-2xl w-80 p-3  text-center active:translate-y-1 active:shadow transition ">Submitt
+    <div className="bg-white w-full min-h-screen flex items-center justify-center">
+      <div className="flex flex-col bg-[#7B7770] w-[30rem] p-10 rounded-2xl text-center">
+
+        {/* Letter animation renders here */}
+        <div
+          ref={containerf}
+          className="flex justify-center gap-[2px] mb-4"
+        />
+
+        {/* Welcome textfades in */}
+        <p
+          ref={paragraphref}
+          className="text-white text-sm font-extralight mb-2 transition-opacity duration-500"
+          style={{ opacity: 0 }}
+        >
+          Welcome to <span className="font-bold">Coffetech@</span> a tech Hub
+        </p>
+
+        <h1 className="font-extrabold  text-3xl text-white mb-6 " >
+          Login
+        </h1>
+
+        {/* Form fades in */}
+        <div
+          ref={sutileref}
+          className="flex flex-col gap-3 transition-opacity duration-500"
+          style={{ opacity: 0 }}
+        >
+          <input
+            type="text"
+            placeholder="Username / Email"
+            className="border-2 border-black rounded-lg px-4 py-2 text-sm text-black focus:outline-none"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="border-2 border-black rounded-lg px-4 py-2 text-sm text-black focus:outline-none"
+          />
+          <button className="text-white bg-black w-full h-12 mt-2 rounded-2xl hover:bg-[#242A27] transition-colors">
+            Log in
           </button>
-          <Link href="/signup">Go to the sign-up page<span className=" text-green-900 font-bold text-2xl ">?</span></Link>
+        </div>
+
+        {/* Forgot password — fades in */}
+        <div
+          ref={formref}
+          className="mt-4 transition-opacity duration-500"
+          style={{ opacity: 0 }}
+        >
+          <p className="text-white text-sm font-extralight">
+            Forgot password?{" "}
+            <a href="#" className="underline font-bold">
+              Reset here
+            </a>
+          </p>
+          <Link href="/signup/page" >GO to the signup</Link>
+        </div>
+
       </div>
-     </div>
     </div>
   )
 }

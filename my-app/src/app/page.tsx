@@ -1,9 +1,10 @@
 "use client"
-import Signpage from "./signup/page";
+// import Signpage from "./signup/page";
+import LoginPage from "./login/page.tsx";
 export default function Home() {
   return (
   <div>
- <Signpage/>
+ <LoginPage/>
   </div>
   );
 }
