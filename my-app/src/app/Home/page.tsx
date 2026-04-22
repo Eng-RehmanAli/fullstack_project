@@ -13,7 +13,7 @@ export default function Homepage() {
 
     const ctxRaw = canvas.getContext("2d")
     if (!ctxRaw) return
-    const ctx: CanvasRenderingContext2D = ctxRaw  // ✅ locked non-null
+    const ctx: CanvasRenderingContext2D = ctxRaw
 
     let animationId: number
     let dots: { x: number; y: number }[] = []
@@ -77,7 +77,8 @@ export default function Homepage() {
   return (
     <div className="bg-black text-white">
       {/* HERO */}
-      <section className="relative w-100vw h-[420px] bg-[#ded3d3] overflow-hidden font-mono ml-4 mr-4">
+      {/* Fixed: removed invalid "w-100vw", removed "ml-4 mr-4" (caused overflow), removed "font-mono" (conflicts with font-serif on children) */}
+      <section className="relative w-full h-[420px] bg-[#ded3d3] overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 text-center px-4">
@@ -141,7 +142,7 @@ export default function Homepage() {
               <h2 className="font-bold text-lg">{item.title}</h2>
               <p className="text-sm opacity-80">{item.desc}</p>
 
-              <button type="button" className="mt-3 bg-[#7B7770] px-4 py-1 text-xs">
+              <button type="button" className="mt-3 bg-[#7B7770] px-4 py-1 text-xs active:scale-101 transition cursor-pointer">
                 Lets work
               </button>
             </div>

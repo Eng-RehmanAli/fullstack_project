@@ -51,7 +51,6 @@ function Headerpage() {
         <li className="font-extrabold text-sm text-white cursor-pointer underline ">Home</li>
         <li className="font-extrabold text-sm text-white cursor-pointer  underline">Contact </li>
         <li className="font-extrabold text-sm text-white cursor-pointer  underline">About</li>
-        <li className="font-extrabold text-sm text-white cursor-pointer  underline">Projects</li>
         <li className="font-extrabold text-sm text-white cursor-pointer  underline">Profile</li>
         
       </ul>
