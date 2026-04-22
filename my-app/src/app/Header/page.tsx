@@ -1,6 +1,7 @@
 "use client"
 import { FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 function Headerpage() {
   const containerf=useRef<HTMLDivElement>(null);
 
@@ -48,10 +49,10 @@ function Headerpage() {
         </div>
     <div  className="mr-29" >
       <ul className="flex flex-row bg-[#222121] gap-4 w-80  justify-center  mt-1.5">
-        <li className="font-extrabold text-sm text-white cursor-pointer underline ">Home</li>
-        <li className="font-extrabold text-sm text-white cursor-pointer  underline">Contact </li>
-        <li className="font-extrabold text-sm text-white cursor-pointer  underline">About</li>
-        <li className="font-extrabold text-sm text-white cursor-pointer  underline">Profile</li>
+       <Link href="/Home"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Home</li></Link>
+          <Link href="/Contact"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Contact</li></Link>
+          <Link href="/about"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">About</li></Link>
+          <Link href="/profile"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Profile</li></Link>
         
       </ul>
     </div>

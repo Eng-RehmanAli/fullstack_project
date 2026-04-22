@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useRef } from "react"
-
+import Link from "next/link"
 export default function Homepage() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -66,12 +66,12 @@ export default function Homepage() {
   }, [])
 
   const services = [
-    { img: "/images/web1.jpeg",     title: "Web Development",        desc: "Modern responsive websites with performance focus" },
-    { img: "/images/Ai.jpg",        title: "Artificial Intelligence", desc: "Smart AI-powered digital solutions" },
-    { img: "/images/LLM.jpg",       title: "LLMs",                   desc: "Build intelligent text-based applications" },
-    { img: "/images/app.jpg",       title: "App Development",        desc: "Android & iOS high-performance apps" },
-    { img: "/images/additing.jpg",  title: "Editing",                desc: "Professional photo & video editing" },
-    { img: "/images/markiting.png", title: "Marketing",              desc: "Grow your brand with smart strategies" },
+    { img: "/images/web1.jpeg",     title: "Web Development",        desc: "Modern responsive websites with performance focus",page:"/web" },
+    { img: "/images/Ai.jpg",        title: "Artificial Intelligence", desc: "Smart AI-powered digital solutions",page:"/AI" },
+    { img: "/images/LLM.jpg",       title: "LLMs",                   desc: "Build intelligent text-based applications",page:"/LLM" },
+    { img: "/images/app.jpg",       title: "App Development",        desc: "Android & iOS high-performance apps",page:"/app" },
+    { img: "/images/additing.jpg",  title: "Editing",                desc: "Professional photo & video editing",page:"/edditor" },
+    { img: "/images/markiting.png", title: "Marketing",              desc: "Grow your brand with smart strategies",page:"/market" },
   ]
 
   return (
@@ -142,9 +142,9 @@ export default function Homepage() {
               <h2 className="font-bold text-lg">{item.title}</h2>
               <p className="text-sm opacity-80">{item.desc}</p>
 
-              <button type="button" className="mt-3 bg-[#7B7770] px-4 py-1 text-xs active:scale-101 transition cursor-pointer">
+              <Link href={item.page}><button type="button" className="mt-3 bg-[#7B7770] px-4 py-1 text-xs active:scale-101 transition cursor-pointer">
                 Lets work
-              </button>
+              </button></Link>
             </div>
           </div>
         ))}

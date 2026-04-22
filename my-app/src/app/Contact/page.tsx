@@ -34,8 +34,8 @@ function ConatctPage() {
           onChange={(e)=>setmessage({...message,Message:e.target.value})}></textarea>
           <input  type='email' placeholder='Enter Email'
           className='border-3 border-white text-white  mt-4 p-2'
-          value={message.Message}
-          onChange={(e)=>setmessage({...message,Message:e.target.value})}/>
+          value={message.Email}
+          onChange={(e)=>setmessage({...message,Email:e.target.value})}/>
           <button className='text-black bg-white active:scale-101 -transition-x-1 mt-4 w-58 p-2 rounded-3xl'>Submitt</button>
 
         </div>

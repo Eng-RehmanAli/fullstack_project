@@ -158,7 +158,7 @@ export default function Llmpage() {
 
       {/* CTA */}
       <div className="text-center py-16">
-        <Link href="/Contact/page">
+        <Link href="/Contact">
           <h2 className="text-2xl font-bold text-[#7B7770] hover:underline cursor-pointer">
             Build Your AI Solution With Us →
           </h2>

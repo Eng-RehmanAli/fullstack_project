@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import { FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
 function Footerpage() {
   return (
@@ -22,21 +23,22 @@ function Footerpage() {
   <div className="text-white">
     <h3 className="font-semibold mb-2">Quick Links</h3>
     <ul className="text-sm space-y-1">
-      <li>Home</li>
-      <li>Projects</li>
-      <li>Contact</li>
-      <li>Blog</li>
+      <li><Link href="/Home">Home</Link></li>
+       <li><Link href="/about">About</Link></li>
+       <li><Link href="/profile">Profile</Link></li>
+       <li><Link href="/Contact">Contact</Link></li>
+      
     </ul>
   </div>
 
   <div className="text-white">
     <h3 className="font-semibold mb-2">Contact</h3>
-    <p className="text-sm">Email: jezra6127@gmail.com</p>
-    <p className="text-sm">Phone: +92 328-9193373</p>
+    <p className="text-sm">Email: abcxxx@gmail.com</p>
+    <p className="text-sm">Phone: +92 xxx-xxxxxxx</p>
 
     <h3 className="font-semibold mb-2 mt-3">Follow Us</h3>
 
-    <div className="flex gap-4">
+    <div className="flex gap-4 ml-15">
       <a href="https://www.linkedin.com/in/rehman-ali3" target="_blank">
         <FiLinkedin />
       </a>
