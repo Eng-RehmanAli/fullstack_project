@@ -1,12 +1,13 @@
 "use client"
 
-
 import Homepage from "./Home/page";
-// import Aboutpage from "./about/page";
+import Additerpage from "./edditor/page"
+import Aipage from "./AI/page";
+import Marktpage from "./market/page";
 export default function Home() {
   return (
   <div>
-  <Homepage/>
+  <Marktpage/>
   </div>
   );
 }
