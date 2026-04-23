@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Headerpage from "./Header/page";
 import Footerpage from "./Footer/page";
 import "./globals.css";
-
+import PointerChaser from "./pointer/page";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-[#0f172a] ">
-
+   <PointerChaser />
         {/* Header */}
         <header className="bg-[#0f172a] text-white p-4">
           <Headerpage />
@@ -38,6 +38,7 @@ export default function RootLayout({
 
         {/* IMPORTANT */}
         <main className="flex-1">
+        
           {children}
         </main>
 
