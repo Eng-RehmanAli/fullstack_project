@@ -1,58 +1,70 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
+
 function Footerpage() {
   return (
-   <div className="w-100vw border-4 border-black bg-[#222121] flex justify-between  p-8 m-3">
-  
-  <div className="flex flex-col gap-3 text-white ml-12">
-    <h1 className="font-bold text-xl">
-      Coffetech@ <span className="align-super text-sm font-extralight">Pvt Ltd</span>
-    </h1>
+    <footer className="w-full bg-[#0f172a] text-[#e2e8f0] border-t border-[#1e293b] mt-0.5">
 
-    <p className="font-semibold text-2xl">what we provide</p>
+      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-    <p className="leading-normal text-sm font-extralight">
-      CoffeeTech® develops scalable <br />
-      and innovative web applications <br />
-      delivering clean design strong <br />
-      performance, and reliable digital experiences.
-    </p>
-  </div>
+        {/* LEFT */}
+        <div className="flex flex-col gap-4">
+          <h1 className="font-bold text-xl text-[#38bdf8]">
+            Coffetech@
+            <span className="text-sm font-light text-[#94a3b8] ml-2">
+              Pvt Ltd
+            </span>
+          </h1>
 
-  <div className="text-white">
-    <h3 className="font-semibold mb-2">Quick Links</h3>
-    <ul className="text-sm space-y-1">
-      <li><Link href="/Home">Home</Link></li>
-       <li><Link href="/about">About</Link></li>
-       <li><Link href="/profile">Profile</Link></li>
-       <li><Link href="/Contact">Contact</Link></li>
-      
-    </ul>
-  </div>
+          <p className="text-lg font-semibold text-white">
+            What we provide
+          </p>
 
-  <div className="text-white">
-    <h3 className="font-semibold mb-2">Contact</h3>
-    <p className="text-sm">Email: abcxxx@gmail.com</p>
-    <p className="text-sm">Phone: +92 xxx-xxxxxxx</p>
+          <p className="text-sm text-[#94a3b8] leading-relaxed">
+            CoffeeTech develops scalable and innovative web applications,
+            delivering clean design, strong performance, and reliable digital
+            experiences.
+          </p>
+        </div>
 
-    <h3 className="font-semibold mb-2 mt-3">Follow Us</h3>
+        {/* LINKS */}
+        <div>
+          <h3 className="font-semibold mb-3 text-white">Quick Links</h3>
 
-    <div className="flex gap-4 ml-15">
-      <a href="https://www.linkedin.com/in/rehman-ali3" target="_blank">
-        <FiLinkedin />
-      </a>
-      <a href="https://github.com" target="_blank">
-        <FiGithub />
-      </a>
-      <a href="https://twitter.com" target="_blank">
-        <FiTwitter />
-      </a>
-    </div>
-  </div>
+          <ul className="text-sm space-y-2 text-[#94a3b8]">
+            <li><Link href="/Home" className="hover:text-[#38bdf8]">Home</Link></li>
+            <li><Link href="/about" className="hover:text-[#38bdf8]">About</Link></li>
+            <li><Link href="/profile" className="hover:text-[#38bdf8]">Profile</Link></li>
+            <li><Link href="/Contact" className="hover:text-[#38bdf8]">Contact</Link></li>
+          </ul>
+        </div>
 
-</div>
-  )
+        {/* CONTACT */}
+        <div>
+          <h3 className="font-semibold mb-3 text-white">Contact</h3>
+
+          <p className="text-sm text-[#94a3b8]">Email: abcxxx@gmail.com</p>
+          <p className="text-sm text-[#94a3b8]">Phone: +92 xxx-xxxxxxx</p>
+
+          <h3 className="font-semibold mt-5 mb-2 text-white">Follow Us</h3>
+
+          <div className="flex gap-4 text-lg text-[#94a3b8]">
+            <a href="#" className="hover:text-[#38bdf8]"><FiLinkedin /></a>
+            <a href="#" className="hover:text-[#38bdf8]"><FiGithub /></a>
+            <a href="#" className="hover:text-[#38bdf8]"><FiTwitter /></a>
+          </div>
+        </div>
+
+      </div>
+
+      {/* bottom */}
+      <div className="text-center text-xs text-[#94a3b8] pb-4 border-t border-[#1e293b] pt-4">
+        © 2026 Coffetech@. All rights reserved.
+      </div>
+
+    </footer>
+  );
 }
 
-export default Footerpage
+export default Footerpage;

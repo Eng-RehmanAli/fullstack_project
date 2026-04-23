@@ -1,48 +1,182 @@
-"use client"
-import { FaHome,FaPhone,FaEnvelope } from 'react-icons/fa';
-import React, { useState } from 'react';
-function ConatctPage() {
-   const[message,setmessage]=React.useState({
-    Email:"",
-    Message:""
-  })
+"use client";
+
+import { FaHome, FaPhone, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+
+const BRAND = "#38bdf8";
+const BG = "#0f172a";
+const CARD = "#1e293b";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const contactInfo = [
+  {
+    icon: FaHome,
+    label: "Address",
+    lines: ["Mohallah Hajji Park, Street No. 1", "Sangla Hill, Punjab, Pakistan"],
+  },
+  {
+    icon: FaPhone,
+    label: "Phone",
+    lines: ["03xx-xxxxxxx"],
+  },
+  {
+    icon: FaEnvelope,
+    label: "Email",
+    lines: ["abc@gmail.com"],
+  },
+];
+
+export default function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    setLoading(false);
+    setSubmitted(true);
+  };
 
   return (
-    <div className="bg-[url('/images/contact.jpeg')] bg-cover bg-center h-screen">
-      <div className="  flex items-center justify-center  flex-col mb-21  "> 
-        <h1 className="font-extrabold text-6xl bg-[#7B7770] mt-10">Contact Us</h1>
-        <p className='text-black text-2xl font-light mt-10'>We’d love to hear from you. Whether you have a question, a project idea<br/> or need support, feel free to reach out and we’ll respond as soon as possible.</p>
-      </div>
-      <div className="address   h-90 mt-3  flex  justify-between flex-row  ">
-        <div className=' flex   text-center justify-center  flex-col gap-3 w-90 bg-[#7B7770] h-75 ml-50' >
-            <p className=' flex flex-row gap-1.5 underline '><FaHome className='font-3xl text-3xl  bg-white p-1 rounded-2xl' /><span className=" font-bold text-2xl">Address</span></p>
-            <p>Mohallah Hajji Park<br/>
-             Street No. 1<br/> 
-             Sangla Hill, Punjab, Pakistan</p>
-             
-            <p className=' flex flex-row gap-2 underline '><FaPhone className='font-3xl text-3xl bg-white p-1   rounded-2xl' /><span className="font-bold text-2xl">Phone</span></p>
-            <p>03xx-xxxxxx</p>
-            <p className=' flex flex-row gap-2 underline '><FaEnvelope className='font-3xl text-3xl bg-white p-1   rounded-2xl'  /><span className=" font-bold text-2xl">Phone</span></p>
-            <p>abc@gmail.com</p>
-        </div>
-        <div className='flex flex-col bg-[#7B7770] p-5  w-80 h-80  items-center justify-center mr-50'>
-          <h1 className='text-white text-2xl font-bold'>Place your Message </h1>
-          <p className='text-white'>Type your message</p>
-          <textarea  rows={10} placeholder='Enter your Message'
-          className='border-3 border-white text-white  mt-4 p-3'
-          value={message.Message}
-          onChange={(e)=>setmessage({...message,Message:e.target.value})}></textarea>
-          <input  type='email' placeholder='Enter Email'
-          className='border-3 border-white text-white  mt-4 p-2'
-          value={message.Email}
-          onChange={(e)=>setmessage({...message,Email:e.target.value})}/>
-          <button className='text-black bg-white active:scale-101 -transition-x-1 mt-4 w-58 p-2 rounded-3xl'>Submitt</button>
+    <div className="min-h-screen bg-[#0f172a] text-[#e2e8f0]">
 
+      {/* HERO */}
+      <section className="text-center py-24 px-6">
+        <motion.h1
+          className="text-5xl md:text-7xl font-black text-[#38bdf8]"
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+        >
+          Contact Us
+        </motion.h1>
+
+        <motion.p
+          className="mt-6 text-[#94a3b8] max-w-xl mx-auto"
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+        >
+          We respond within 24 hours. Let’s build something great together.
+        </motion.p>
+      </section>
+
+      {/* CONTENT */}
+      <section className="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 pb-24">
+
+        {/* LEFT */}
+        <div className="space-y-6">
+
+          {contactInfo.map((item, i) => {
+            const Icon = item.icon;
+
+            return (
+              <motion.div
+                key={item.label}
+                className="flex gap-4 p-5 rounded-xl bg-[#1e293b] border border-[#334155]"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#38bdf8] text-black">
+                  <Icon size={18} />
+                </div>
+
+                <div>
+                  <p className="text-xs text-[#94a3b8] uppercase">
+                    {item.label}
+                  </p>
+                  {item.lines.map((l) => (
+                    <p key={l} className="text-sm">
+                      {l}
+                    </p>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
-      </div>
-      
+
+        {/* RIGHT */}
+        <motion.div
+          className="p-8 rounded-2xl bg-[#1e293b] border border-[#334155]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          {submitted ? (
+            <div className="text-center py-10">
+              <FaPaperPlane className="mx-auto text-[#38bdf8] text-3xl mb-3" />
+              <h2 className="text-xl font-bold">Message Sent</h2>
+              <p className="text-sm text-[#94a3b8] mt-2">
+                We will contact you soon.
+              </p>
+
+              <button
+                onClick={() => {
+                  setSubmitted(false);
+                  setForm({ name: "", email: "", message: "" });
+                }}
+                className="mt-4 text-[#38bdf8] underline"
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+
+              <input
+                placeholder="Name"
+                value={form.name}
+                onChange={(e) =>
+                  setForm({ ...form, name: e.target.value })
+                }
+                className="w-full p-3 rounded-lg bg-[#0f172a] border border-[#334155]"
+              />
+
+              <input
+                placeholder="Email"
+                value={form.email}
+                onChange={(e) =>
+                  setForm({ ...form, email: e.target.value })
+                }
+                className="w-full p-3 rounded-lg bg-[#0f172a] border border-[#334155]"
+              />
+
+              <textarea
+                placeholder="Message"
+                value={form.message}
+                onChange={(e) =>
+                  setForm({ ...form, message: e.target.value })
+                }
+                rows={5}
+                className="w-full p-3 rounded-lg bg-[#0f172a] border border-[#334155]"
+              />
+
+              <button
+                disabled={loading}
+                className="w-full py-3 rounded-lg bg-[#38bdf8] text-black font-bold hover:scale-[1.02] transition"
+              >
+                {loading ? "Sending..." : "Send Message"}
+              </button>
+
+            </form>
+          )}
+        </motion.div>
+
+      </section>
     </div>
-  )
+  );
 }
-
-export default ConatctPage

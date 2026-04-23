@@ -45,13 +45,13 @@ export default function Webpage() {
   ]
 
   return (
-    <div className="bg-[#FAF9F9] text-gray-800">
+    <div className="bg-[#0f172a] text-[#e2e8f0]">
 
       {/* Hero Section */}
       <div className="min-h-[60vh] flex flex-col justify-center items-center text-center px-6">
 
         <motion.h1
-          className="text-4xl font-bold mb-4"
+          className="text-4xl font-bold mb-4 text-[#38bdf8]"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
         >
@@ -59,7 +59,7 @@ export default function Webpage() {
         </motion.h1>
 
         <motion.p
-          className="text-lg max-w-2xl text-gray-600"
+          className="text-lg max-w-2xl text-[#94a3b8]"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
@@ -68,7 +68,7 @@ export default function Webpage() {
         </motion.p>
 
         <motion.button
-          className="mt-6 px-8 py-3 bg-[#7B7770] text-white rounded-xl shadow-lg hover:scale-105 transition"
+          className="mt-6 px-8 py-3 bg-[#38bdf8] text-black font-semibold rounded-xl shadow-lg hover:scale-105 transition"
         >
           Get Started
         </motion.button>
@@ -76,8 +76,11 @@ export default function Webpage() {
 
       {/* About */}
       <div className="max-w-5xl mx-auto px-6 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <h2 className="text-3xl font-bold mb-6 text-white">
+          Why Choose Us?
+        </h2>
+
+        <p className="text-lg text-[#94a3b8] leading-relaxed">
           We provide full-stack web development solutions including frontend,
           backend, APIs, and databases. Our goal is to deliver secure,
           efficient, and scalable applications tailored to your business.
@@ -86,24 +89,25 @@ export default function Webpage() {
 
       {/* Tech Stack */}
       <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Technologies We Use
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto px-4">
           {techStack.map((tech, index) => (
-            <div key={index}>
-              <button className="w-full py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition">
-                {tech}
-              </button>
-            </div>
+            <button
+              key={index}
+              className="w-full py-3 bg-[#1e293b] text-[#e2e8f0] rounded-xl shadow hover:bg-[#334155] transition"
+            >
+              {tech}
+            </button>
           ))}
         </div>
       </div>
 
       {/* Projects */}
       <div className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-10">
+        <h2 className="text-3xl font-bold text-center mb-10 text-white">
           Our Projects
         </h2>
 
@@ -135,7 +139,7 @@ export default function Webpage() {
 
       {/* Steps */}
       <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Development Process
         </h2>
 
@@ -143,7 +147,7 @@ export default function Webpage() {
           {steps.map((step, index) => (
             <button
               key={index}
-              className="py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition"
+              className="py-3 bg-[#1e293b] text-[#e2e8f0] rounded-xl shadow hover:bg-[#334155] transition"
             >
               {step}
             </button>
@@ -154,7 +158,7 @@ export default function Webpage() {
       {/* CTA */}
       <div className="text-center py-16">
         <Link href="/Contact">
-          <h2 className="text-2xl font-bold text-[#7B7770] hover:underline cursor-pointer">
+          <h2 className="text-2xl font-bold text-[#38bdf8] hover:underline cursor-pointer">
             Connect with Us →
           </h2>
         </Link>

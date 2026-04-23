@@ -2,68 +2,85 @@
 import { FiLinkedin, FiGithub, FiTwitter } from "react-icons/fi";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+
 function Headerpage() {
-  const containerf=useRef<HTMLDivElement>(null);
+  const containerf = useRef<HTMLDivElement>(null);
 
-  
-  useEffect(()=>{
-     const word="WELCOME"
-      const container=containerf.current
-      if(!container) return
-      word.split('').forEach((char,i)=>{
-    const span=document.createElement('span');
-    
-    span.textContent=char
-    span.className = 'inline-block text-4xl font-bold text-white opacity-0'
-    container.appendChild(span)
-    {/*The case of the animation is */}
+  useEffect(() => {
+    const word = "WELCOME";
+    const container = containerf.current;
+    if (!container) return;
 
-    setTimeout(() => {
-      span.classList.add('animated-pop')
-    }, i*150);
-  })
+    word.split("").forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.className =
+        "inline-block text-4xl font-bold text-[#38bdf8] opacity-0";
 
-      
-  },[])
+      container.appendChild(span);
+
+      setTimeout(() => {
+        span.classList.add("animated-pop");
+      }, i * 150);
+    });
+  }, []);
+
   return (
-    <div>
-      <header>
-       <div className="min-w-100vw  bg-[#222121] mr-4 m-3 p-6 flex flex-row  justify-between">
-        <div className=" h-10  bg-[#222121] w-60 text-center flex justify-center  flex-col  ">
-            <h1 className="font-extrabold  h-20 text-sm flex justify-left p-0  hover:scale-105 transition text-white cursor-pointer  mt-2">CoffeTech@  Developer_Hub</h1>
-           <div className="flex flex-row gap-4  ml-6 text-white mt-4">
-             <a href="https://www.linkedin.com/in/rehman-ali3" target="_blank">
-                    <FiLinkedin />
-                  </a>
-                  <a href="https://github.com" target="_blank">
-                    <FiGithub />
-                  </a>
-                  <a href="https://twitter.com" target="_blank">
-                    <FiTwitter />
-                  </a>
-           </div>
+    <header className="bg-[#0f172a] shadow-lg">
+      <div className="w-full px-6 py-4 flex justify-between items-center">
+
+        {/* LEFT SECTION */}
+        <div className="flex flex-col">
+          <h1 className="font-extrabold text-lg text-[#38bdf8] cursor-pointer hover:scale-105 transition">
+            CoffeTech@ Developer_Hub
+          </h1>
+
+          <div className="flex gap-4 mt-2 text-[#94a3b8] text-lg">
+            <a href="https://linkedin.com" target="_blank">
+              <FiLinkedin className="hover:text-[#38bdf8] transition" />
+            </a>
+            <a href="https://github.com" target="_blank">
+              <FiGithub className="hover:text-[#38bdf8] transition" />
+            </a>
+            <a href="https://twitter.com" target="_blank">
+              <FiTwitter className="hover:text-[#38bdf8] transition" />
+            </a>
+          </div>
         </div>
-        <div ref={containerf}
-          className="flex justify-center gap-[2px] mb-4  text-black">
-          
+
+        {/* CENTER ANIMATION */}
+        <div ref={containerf} className="flex gap-1"></div>
+
+        {/* NAVIGATION */}
+        <ul className="flex gap-6 text-sm font-semibold text-[#e2e8f0]">
+          <Link href="/Home">
+            <li className="hover:text-[#38bdf8] cursor-pointer transition">Home</li>
+          </Link>
+          <Link href="/Contact">
+            <li className="hover:text-[#38bdf8] cursor-pointer transition">Contact</li>
+          </Link>
+          <Link href="/about">
+            <li className="hover:text-[#38bdf8] cursor-pointer transition">About</li>
+          </Link>
+          <Link href="/profile">
+            <li className="hover:text-[#38bdf8] cursor-pointer transition">Profile</li>
+          </Link>
+        </ul>
+
+        {/* BUTTONS */}
+        <div className="flex gap-3">
+          <button className="bg-[#38bdf8] text-black px-4 py-1.5 rounded-md font-semibold hover:bg-[#0ea5e9] transition">
+            Login
+          </button>
+
+          <button className="border border-[#38bdf8] text-[#38bdf8] px-4 py-1.5 rounded-md font-semibold hover:bg-[#38bdf8] hover:text-black transition">
+            Signup
+          </button>
         </div>
-    <div  className="mr-29" >
-      <ul className="flex flex-row bg-[#222121] gap-4 w-80  justify-center  mt-1.5">
-       <Link href="/Home"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Home</li></Link>
-          <Link href="/Contact"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Contact</li></Link>
-          <Link href="/about"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">About</li></Link>
-          <Link href="/profile"> <li className="font-extrabold text-sm text-white cursor-pointer underline ">Profile</li></Link>
-        
-      </ul>
-    </div>
-    <div className="text-white flex flex-row gap-3 ">
-      <button className="bg-white text-black h-8 w-15 rounded-0.5xl font-bold cursor-pointer">Login</button>
-      <button className="bg-white text-black h-8 w-15 rounded-0.5xl font-bold cursor-pointer">Sigup</button>
-    </div>
-       </div>
-      </header>
-    </div>
-  )
+
+      </div>
+    </header>
+  );
 }
 
-export default Headerpage
+export default Headerpage;

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Webpage() {
-  const videoRef = useRef<HTMLVideoElement[]>([])
+  const videoRef = useRef<HTMLVideoElement[]>([]);
 
   const videoArray = [
     "/video/4k.mp4",
@@ -13,46 +13,44 @@ export default function Webpage() {
     "/video/comerical.mp4",
     "/video/nextflix.mp4",
     "/video/tech.mp4",
-    "/video/youtube.mp4"
-  ]
+    "/video/youtube.mp4",
+  ];
 
   const playRunner = (index: number) => {
-    const video = videoRef.current[index]
-    if (video) video.play()
-  }
+    const video = videoRef.current[index];
+    if (video) video.play();
+  };
 
   const pauseRunner = (index: number) => {
-    const video = videoRef.current[index]
+    const video = videoRef.current[index];
     if (video) {
-      video.pause()
-      video.currentTime = 0
+      video.pause();
+      video.currentTime = 0;
     }
-  }
+  };
 
-  // ✅ App Technologies
   const techStack = [
-    "React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)",
+    "React Native", "Flutter", "Swift", "Kotlin",
     "Firebase", "Node.js", "Express.js", "MongoDB",
     "PostgreSQL", "REST APIs", "GraphQL", "App Security"
-  ]
+  ];
 
-  // ✅ App Development Steps
   const steps = [
-    "Idea & Requirement Gathering",
+    "Idea & Requirement",
     "UI/UX Design",
-    "App Development",
-    "Testing & Debugging",
-    "Deployment & Launch"
-  ]
+    "Development",
+    "Testing",
+    "Launch"
+  ];
 
   return (
-    <div className="bg-[#FAF9F9] text-gray-800">
+    <div className="bg-[#0f172a] text-[#e2e8f0]">
 
-      {/* Hero Section */}
-      <div className="min-h-[60vh] flex flex-col justify-center items-center text-center px-6">
+      {/* HERO */}
+      <section className="min-h-[60vh] flex flex-col justify-center items-center text-center px-6">
 
         <motion.h1
-          className="text-4xl font-bold mb-4"
+          className="text-4xl md:text-5xl font-bold mb-4"
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
         >
@@ -60,53 +58,58 @@ export default function Webpage() {
         </motion.h1>
 
         <motion.p
-          className="text-lg max-w-2xl text-gray-600"
-          initial={{ y: 100, opacity: 0 }}
+          className="text-lg max-w-2xl text-[#94a3b8]"
+          initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          We transform ideas into powerful mobile applications using modern technologies.
-          Our focus is on fast, scalable, and user-friendly apps that help businesses grow.
+          We turn ideas into powerful mobile apps that are fast, scalable,
+          and user-friendly.
         </motion.p>
 
-        <motion.button
-          className="mt-6 px-8 py-3 bg-[#7B7770] text-white rounded-xl shadow-lg hover:scale-105 transition"
-        >
-          Get Started
-        </motion.button>
-      </div>
+        <Link href="/selection">
+          <motion.button
+            className="mt-6 px-8 py-3 bg-[#38bdf8] text-black rounded-md font-semibold hover:bg-[#0ea5e9] transition"
+            whileHover={{ scale: 1.05 }}
+          >
+            Get Started
+          </motion.button>
+        </Link>
+      </section>
 
-      {/* About */}
-      <div className="max-w-5xl mx-auto px-6 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-6">Why Choose Us?</h2>
+      {/* ABOUT */}
+      <section className="max-w-5xl mx-auto px-6 py-12 text-center">
+        <h2 className="text-3xl font-bold mb-6 text-[#38bdf8]">
+          Why Choose Us?
+        </h2>
 
-        <p className="text-lg text-gray-600 leading-relaxed">
-          We provide complete mobile app development solutions including frontend,
+        <p className="text-[#94a3b8] leading-relaxed">
+          We provide complete app development solutions including frontend,
           backend, APIs, and databases. Our goal is to deliver secure,
-          high-performance, and scalable applications tailored to your business needs.
+          high-performance, and scalable applications.
         </p>
-      </div>
+      </section>
 
-      {/* Tech Stack */}
-      <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+      {/* TECH STACK */}
+      <section className="py-12 bg-[#1e293b]">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#38bdf8]">
           Technologies We Use
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto px-4">
           {techStack.map((tech, index) => (
-            <button
+            <div
               key={index}
-              className="w-full py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition"
+              className="py-3 text-center bg-[#0f172a] border border-[#38bdf8]/20 rounded-md hover:border-[#38bdf8] transition"
             >
               {tech}
-            </button>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Projects */}
-      <div className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-10">
+      {/* PROJECTS */}
+      <section className="py-16">
+        <h2 className="text-3xl font-bold text-center mb-10 text-[#38bdf8]">
           Our Apps in Action
         </h2>
 
@@ -119,50 +122,50 @@ export default function Webpage() {
                 muted
                 loop
                 playsInline
-                className="w-full h-48 object-cover rounded-xl"
+                className="w-full h-48 object-cover rounded-md"
                 ref={(el) => {
-                  if (el) videoRef.current[index] = el
+                  if (el) videoRef.current[index] = el;
                 }}
                 onMouseEnter={() => playRunner(index)}
                 onMouseLeave={() => pauseRunner(index)}
               />
 
-              <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition rounded-xl">
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition rounded-md">
                 App Project {index + 1}
               </div>
 
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Steps */}
-      <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+      {/* PROCESS */}
+      <section className="py-12 bg-[#1e293b]">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#38bdf8]">
           App Development Process
         </h2>
 
         <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto px-4">
           {steps.map((step, index) => (
-            <button
+            <div
               key={index}
-              className="py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition"
+              className="py-3 text-center bg-[#0f172a] border border-[#38bdf8]/20 rounded-md hover:border-[#38bdf8] transition"
             >
               {step}
-            </button>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
       {/* CTA */}
-      <div className="text-center py-16">
+      <section className="text-center py-16">
         <Link href="/Contact">
-          <h2 className="text-2xl font-bold text-[#7B7770] hover:underline cursor-pointer">
+          <h2 className="text-2xl font-bold text-[#38bdf8] hover:underline cursor-pointer">
             Connect with Us to Build Your App →
           </h2>
         </Link>
-      </div>
+      </section>
 
     </div>
-  )
+  );
 }

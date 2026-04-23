@@ -19,7 +19,7 @@ export default function HeroBanner() {
     function resize() {
       if (!canvas) return
       W = canvas.width = canvas.parentElement?.offsetWidth ?? window.innerWidth
-      H = canvas.height = 420
+      H = canvas.height = 460
 
       const cols = Math.ceil(W / 40) + 1
       const rows = Math.ceil(H / 40) + 1
@@ -39,12 +39,12 @@ export default function HeroBanner() {
 
       dots.forEach((d) => {
         d.o =
-          0.04 +
-          0.07 * Math.abs(Math.sin(ts * 0.0005 + d.x * 0.03 + d.y * 0.02))
+          0.03 +
+          0.08 * Math.abs(Math.sin(ts * 0.0006 + d.x * 0.02 + d.y * 0.02))
 
         ctx.beginPath()
         ctx.arc(d.x, d.y, 1.2, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(123,119,112,${d.o})`
+        ctx.fillStyle = `rgba(56,189,248,${d.o})`
         ctx.fill()
       })
 
@@ -63,72 +63,76 @@ export default function HeroBanner() {
   }, [])
 
   return (
-    <section className="relative w-full h-[420px] bg-[#0d0d0d] overflow-hidden font-mono">
+    <section className="relative w-full h-[460px] bg-[#0b1220] overflow-hidden">
 
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+      {/* canvas */}
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-70" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+      {/* premium glow overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a] via-[#0b1220] to-black" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.12),transparent_60%)]" />
 
-        <div className="text-[#7B7770] border border-[#7B7770] text-xs tracking-[3px] px-4 py-1 rounded-sm mb-6 animate-fadeUp">
-          Coffetech@
+      {/* content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 text-center">
+
+        {/* badge */}
+        <div className="mb-6 px-5 py-1 text-xs tracking-[4px] text-[#38bdf8] border border-[#38bdf8]/30 bg-[#0f172a]/40 backdrop-blur-md rounded-full">
+          COFFETECH
         </div>
 
-        <div className="text-center leading-tight mb-5">
+        {/* heading */}
+        <h1 className="text-4xl md:text-6xl font-bold text-[#e2e8f0] leading-tight">
+          The future of <span className="text-[#38bdf8]">development</span>
+        </h1>
 
-          <span className="block text-5xl font-bold text-[#3a3836] font-serif animate-fadeUp animation-delay-200">
-            The future
+        {/* AI line */}
+        <div className="flex items-center justify-center gap-3 mt-4 flex-wrap">
+
+          <span className="text-3xl md:text-5xl font-semibold text-[#cbd5e1]">
+            is
           </span>
 
-          <span className="block text-5xl font-bold text-[#3a3836] font-serif animate-fadeUp animation-delay-400">
-            of development
+          {/* target */}
+          <svg width="38" height="38" viewBox="0 0 44 44">
+            <circle cx="22" cy="22" r="20" stroke="#38bdf8" strokeWidth="1.6" />
+            <circle cx="22" cy="22" r="14" stroke="#38bdf8" strokeWidth="1.4" />
+            <circle cx="22" cy="22" r="8" stroke="#38bdf8" strokeWidth="1.2" />
+            <circle cx="22" cy="22" r="2.5" fill="#38bdf8" />
+          </svg>
+
+          <span className="text-[#38bdf8] text-4xl md:text-5xl font-bold">
+            human
           </span>
 
-          <div className="flex items-center justify-center gap-3 mt-1 animate-fadeUp animation-delay-600">
+          <span className="text-[#38bdf8] text-3xl md:text-4xl font-bold">
+            +
+          </span>
 
-            <span className="text-5xl font-bold text-[#3a3836] font-serif">
-              is
-            </span>
+          {/* star */}
+          <svg width="32" height="32" viewBox="0 0 30 30" className="animate-spin">
+            <polygon
+              points="15,2 18,11 28,11 20,17 23,27 15,21 7,27 10,17 2,11 12,11"
+              fill="#38bdf8"
+            />
+          </svg>
 
-            {/* target icon */}
-            <svg width="36" height="36" viewBox="0 0 44 44" fill="none">
-              <circle cx="22" cy="22" r="20" stroke="#7B7770" strokeWidth="1.8" />
-              <circle cx="22" cy="22" r="14" stroke="#7B7770" strokeWidth="1.6" />
-              <circle cx="22" cy="22" r="8" stroke="#7B7770" strokeWidth="1.5" />
-              <circle cx="22" cy="22" r="2.5" fill="#7B7770" />
-            </svg>
-
-            <span className="text-5xl font-bold text-white font-serif">
-              human
-            </span>
-
-            <span className="text-4xl text-[#7B7770] font-serif">+</span>
-
-            {/* spinning star */}
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
-              fill="none"
-              className="animate-spin-slow"
-            >
-              <polygon
-                points="15,2 18,11 28,11 20,17 23,27 15,21 7,27 10,17 2,11 12,11"
-                fill="#7B7770"
-              />
-            </svg>
-
-            <span className="text-5xl font-bold text-white font-serif">
-              AI
-            </span>
-          </div>
+          <span className="text-[#38bdf8] text-4xl md:text-5xl font-bold">
+            AI
+          </span>
         </div>
 
-        <p className="text-[#5a5754] text-sm text-center max-w-lg mb-7 animate-fadeUp animation-delay-700">
-          We build modern, responsive, and high-performance websites tailored to your needs.
-          From design to deployment — seamless digital experiences.
+        {/* description */}
+        <p className="text-[#94a3b8] text-sm md:text-base max-w-xl mt-6 leading-relaxed">
+          We build modern, fast, and scalable digital experiences from design to deployment.
         </p>
 
-      
+        {/* CTA */}
+        <Link href="/selection">
+          <button className="mt-7 px-7 py-2 bg-[#38bdf8] text-black font-semibold text-sm rounded-md hover:bg-[#0ea5e9] transition shadow-lg shadow-[#38bdf8]/20">
+            Get Started
+          </button>
+        </Link>
+
       </div>
     </section>
   )

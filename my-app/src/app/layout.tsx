@@ -29,10 +29,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-[#0f172a] ">
 
         {/* Header */}
-        <header className="bg-black text-white p-4">
+        <header className="bg-[#0f172a] text-white p-4">
           <Headerpage />
         </header>
 
@@ -42,7 +42,7 @@ export default function RootLayout({
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-200 p-4 text-center">
+        <footer className="bg-[#0f172a] p-4 text-center">
           <Footerpage />
         </footer>
 

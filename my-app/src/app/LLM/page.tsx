@@ -29,7 +29,6 @@ export default function Llmpage() {
     }
   }
 
-  // ✅ LLM Technologies
   const techStack = [
     "OpenAI API", "LangChain", "LlamaIndex", "Hugging Face",
     "Python", "FastAPI", "Vector Databases",
@@ -37,7 +36,6 @@ export default function Llmpage() {
     "Prompt Engineering", "RAG (Retrieval Augmented Generation)"
   ]
 
-  // ✅ LLM Development Steps
   const steps = [
     "Problem Definition",
     "Data Collection",
@@ -47,9 +45,9 @@ export default function Llmpage() {
   ]
 
   return (
-    <div className="bg-[#FAF9F9] text-gray-800">
+    <div className="bg-[#0f172a] text-[#e2e8f0]">
 
-      {/* Hero Section */}
+      {/* HERO */}
       <div className="min-h-[60vh] flex flex-col justify-center items-center text-center px-6">
 
         <motion.h1
@@ -61,36 +59,39 @@ export default function Llmpage() {
         </motion.h1>
 
         <motion.p
-          className="text-lg max-w-2xl text-gray-600"
+          className="text-lg max-w-2xl text-[#94a3b8]"
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
           We build intelligent AI applications powered by Large Language Models.
-          Our solutions help automate workflows, enhance user experiences,
-          and unlock the power of data through conversational AI.
+          From automation to conversational AI, we deliver scalable solutions.
         </motion.p>
 
         <motion.button
-          className="mt-6 px-8 py-3 bg-[#7B7770] text-white rounded-xl shadow-lg hover:scale-105 transition"
+          className="mt-6 px-8 py-3 bg-[#38bdf8] text-black font-semibold rounded-xl shadow-lg hover:scale-105 transition"
         >
           Get Started
         </motion.button>
+
       </div>
 
-      {/* About */}
-      <div className="max-w-5xl mx-auto px-6 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-6">Why Choose Our AI Solutions?</h2>
+      {/* ABOUT */}
+      <div className="max-w-5xl mx-auto px-6 py-16 text-center">
 
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <h2 className="text-3xl font-bold mb-6 text-[#38bdf8]">
+          Why Choose Our AI Solutions?
+        </h2>
+
+        <p className="text-[#94a3b8] leading-relaxed">
           We design and develop end-to-end AI systems using cutting-edge LLMs.
-          From chatbots and virtual assistants to automation tools,
-          we deliver scalable, secure, and intelligent applications tailored to your needs.
+          From chatbots to automation tools, we build scalable and intelligent applications.
         </p>
       </div>
 
-      {/* Tech Stack */}
-      <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+      {/* TECH STACK */}
+      <div className="py-16 bg-[#1e293b]">
+
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#38bdf8]">
           Technologies We Use
         </h2>
 
@@ -98,7 +99,7 @@ export default function Llmpage() {
           {techStack.map((tech, index) => (
             <button
               key={index}
-              className="w-full py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition"
+              className="py-3 bg-[#0f172a] text-[#e2e8f0] rounded-xl border border-[#1e293b] hover:border-[#38bdf8] transition"
             >
               {tech}
             </button>
@@ -106,13 +107,14 @@ export default function Llmpage() {
         </div>
       </div>
 
-      {/* Projects */}
-      <div className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-10">
+      {/* PROJECTS */}
+      <div className="py-16 px-6">
+
+        <h2 className="text-3xl font-bold text-center mb-10 text-[#38bdf8]">
           AI Projects in Action
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {videoArray.map((src, index) => (
             <div key={index} className="relative group">
 
@@ -129,7 +131,7 @@ export default function Llmpage() {
                 onMouseLeave={() => pauseRunner(index)}
               />
 
-              <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition rounded-xl">
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-[#e2e8f0] opacity-0 group-hover:opacity-100 transition rounded-xl">
                 AI Project {index + 1}
               </div>
 
@@ -138,9 +140,10 @@ export default function Llmpage() {
         </div>
       </div>
 
-      {/* Steps */}
-      <div className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-8">
+      {/* STEPS */}
+      <div className="py-16 bg-[#1e293b]">
+
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#38bdf8]">
           LLM Development Process
         </h2>
 
@@ -148,7 +151,7 @@ export default function Llmpage() {
           {steps.map((step, index) => (
             <button
               key={index}
-              className="py-3 bg-[#7B7770] text-white rounded-xl shadow hover:bg-[#5f5c56] transition"
+              className="py-3 bg-[#0f172a] text-[#e2e8f0] rounded-xl border border-[#1e293b] hover:border-[#38bdf8] transition"
             >
               {step}
             </button>
@@ -158,11 +161,13 @@ export default function Llmpage() {
 
       {/* CTA */}
       <div className="text-center py-16">
+
         <Link href="/Contact">
-          <h2 className="text-2xl font-bold text-[#7B7770] hover:underline cursor-pointer">
+          <h2 className="text-2xl font-bold text-[#38bdf8] hover:underline cursor-pointer">
             Build Your AI Solution With Us →
           </h2>
         </Link>
+
       </div>
 
     </div>
