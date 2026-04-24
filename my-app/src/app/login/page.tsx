@@ -1,13 +1,73 @@
 'use client'
-
 import Link from "next/link"
-import { useRef, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
+import toast from "react-hot-toast"
+import axios from "axios"
+import { useRouter } from "next/navigation";
 
 function LoginPage() {
   const containerf = useRef<HTMLDivElement>(null)
   const sutileref = useRef<HTMLDivElement>(null)
   const formref = useRef<HTMLDivElement>(null)
   const paragraphref = useRef<HTMLParagraphElement>(null)
+
+  const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
+
+  // Store user input
+  const [user, setUser] = React.useState({
+    email: "",
+    password: ""
+  });
+
+  // Store validation errors
+  const [errors, setErrors] = React.useState({
+    email: "",
+    password: ""
+  });
+
+  // Validation function (checks email + password rules)
+  function validate() {
+    let valid = true;
+    const newErrors = { email: "", password: "" };
+
+    // Email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(user.email)) {
+      newErrors.email = "Enter a valid email";
+      valid = false;
+    }
+
+    // Password must contain special character
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    if (!specialCharRegex.test(user.password)) {
+      newErrors.password = "Password must contain special character";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  }
+
+  async function Onlogin() {
+    // Stop login if validation fails
+    if (!validate()) return;
+
+    setLoading(true);
+
+    try {
+      await axios.post("/api/user/login", user);
+      toast.success("Login successful");
+      router.push("/Home");
+
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || "Login failed");
+      console.log(error);
+
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     const word = "WELCOME"
@@ -54,13 +114,8 @@ function LoginPage() {
 
       <div className="flex flex-col bg-[#1e293b] w-full max-w-md p-10 rounded-2xl text-center shadow-xl border border-[#334155]">
 
-        {/* Animated Title */}
-        <div
-          ref={containerf}
-          className="flex justify-center gap-[2px] mb-4"
-        />
+        <div ref={containerf} className="flex justify-center gap-[2px] mb-4" />
 
-        {/* Subtitle */}
         <p
           ref={paragraphref}
           className="text-[#94a3b8] text-sm font-light mb-2 transition-opacity duration-500"
@@ -73,30 +128,50 @@ function LoginPage() {
           Login
         </h1>
 
-        {/* Form */}
         <div
           ref={sutileref}
           className="flex flex-col gap-3 transition-opacity duration-500"
           style={{ opacity: 0 }}
         >
+
           <input
             type="text"
             placeholder="Username / Email"
+            value={user.email}
+            onChange={(e) =>
+              setUser({ ...user, email: e.target.value })
+            }
             className="bg-[#0f172a] border border-[#334155] rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-[#38bdf8]"
           />
+
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
 
           <input
             type="password"
             placeholder="Password"
+            value={user.password}
+            onChange={(e) =>
+              setUser({ ...user, password: e.target.value })
+            }
             className="bg-[#0f172a] border border-[#334155] rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-[#38bdf8]"
           />
 
-          <button className="bg-[#38bdf8] text-black font-semibold w-full h-12 mt-2 rounded-2xl hover:scale-[1.02] transition">
-            Log in
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
+
+          <button
+            onClick={Onlogin}
+            disabled={loading}
+            className="bg-[#38bdf8] text-black font-semibold w-full h-12 mt-2 rounded-2xl hover:scale-[1.02] transition"
+          >
+            {loading ? "Logging in..." : "Login"}
           </button>
+
         </div>
 
-        {/* Footer */}
         <div
           ref={formref}
           className="mt-4 transition-opacity duration-500"
